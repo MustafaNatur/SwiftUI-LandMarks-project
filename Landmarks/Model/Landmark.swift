@@ -1,39 +1,34 @@
-//
-//  Landmark.swift
-//  Landmarks
-//
-//  Created by Мустафа Натур on 29.07.2023.
-//
+/*
+See LICENSE folder for this sample’s licensing information.
+
+Abstract:
+A representation of a single landmark.
+*/
 
 import Foundation
 import SwiftUI
 import CoreLocation
 
-// MARK: -Landmark model
 struct Landmark: Hashable, Codable, Identifiable {
-    
-    static func == (lhs: Landmark, rhs: Landmark) -> Bool {
-        lhs.id == rhs.id
-    }
-    
     var id: Int
     var name: String
     var park: String
     var state: String
     var description: String
-    
+    var isFavorite: Bool
+
     private var imageName: String
     var image: Image {
         Image(imageName)
     }
-    
+
     private var coordinates: Coordinates
-    var locationCoordiante: CLLocationCoordinate2D {
+    var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(
             latitude: coordinates.latitude,
             longitude: coordinates.longitude)
     }
-    
+
     struct Coordinates: Hashable, Codable {
         var latitude: Double
         var longitude: Double
